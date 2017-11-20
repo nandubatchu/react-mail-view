@@ -1,4 +1,5 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
+// import axios from 'axios';
 import './App.css';
 import './components/EmailForm.css';
 import './components/EmailList.css';
@@ -7,8 +8,48 @@ import './components/EmailView.css';
 
 
 
-export default class App extends PureComponent {
+export default class App extends Component {
+
+  constructor(){
+    super();
+    this.state = {emailData: []};
+    this.fetchData = this.fetchData.bind(this);
+
+  }
+
+  componentDidMount(){
+    // this.fetchData();
+  }
+
+  fetchData(){
+    // let emailData
+    // axios.get('http://localhost:9090/emails')
+    //   .then(function (response) {
+    //     console.log(response.data);
+    //     this.emailData = response.data;
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //     this.emailData = [];
+    //   });
+
+    // this.setState({emailData: emailData})
+    // console.log(emailData)
+
+
+  }
+
   render() {
+    // let emails = this.state.emailData.map((email, key)=>{
+
+    //   return (<li key={key}>
+    //       <div className="email-list-item">
+    //           <span>{email.from}</span>
+    //           <span>{email.message}</span>
+    //       </div>
+    //     </li>);
+    // });
+
     return (
       <main className="app">
         <ul className="email-list">

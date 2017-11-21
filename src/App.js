@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import './App.css';
 import './components/EmailForm.css';
 import './components/EmailList.css';
@@ -18,20 +18,20 @@ export default class App extends Component {
   }
 
   componentDidMount(){
-    // this.fetchData();
+    this.fetchData();
   }
 
   fetchData(){
-    // let emailData
-    // axios.get('http://localhost:9090/emails')
-    //   .then(function (response) {
-    //     console.log(response.data);
-    //     this.emailData = response.data;
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //     this.emailData = [];
-    //   });
+    let me = this;
+    axios.get('http://localhost:9090/emails')
+      .then(function (response) {
+        console.log(response.data);
+        me.setState({emailData: response.data});
+      })
+      .catch(function (error) {
+        console.log(error);
+        this.emailData = [];
+      });
 
     // this.setState({emailData: emailData})
     // console.log(emailData)
@@ -40,19 +40,20 @@ export default class App extends Component {
   }
 
   render() {
-    // let emails = this.state.emailData.map((email, key)=>{
+    let emails = this.state.emailData.map((email, key)=>{
 
-    //   return (<li key={key}>
-    //       <div className="email-list-item">
-    //           <span>{email.from}</span>
-    //           <span>{email.message}</span>
-    //       </div>
-    //     </li>);
-    // });
+      return (<li key={key}>
+          <div className="email-list-item">
+              <span>{email.from}</span>
+              <span>{email.subject}</span>
+          </div>
+        </li>);
+    });
 
     return (
       <main className="app">
         <ul className="email-list">
+            {emails}
           <li>
             <div className="email-list-item">
               <span>alittle0@gmail.com</span>
